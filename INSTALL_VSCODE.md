@@ -53,3 +53,7 @@ You will see something like this:
 Run the example. Simply, bring up the terminal. (At the top of the windows, in Visual Studio Code, select `Terminal -> New Terminal`). Once the terminal is open, navigate to the `build` directory and run the executable.
 
 ![screenshot](screenshots/vscode_07.png)
+
+The dot files will be located in your current working directory. So, if you are in `cudd-example-project/build`, they will appear over there!
+
+![screenshot](screenshots/vscode_08.png)
