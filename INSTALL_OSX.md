@@ -12,7 +12,7 @@ Open CMake and in the **Where is the source code?** navigate to this project. Do
 
 Then click `Configure` and select the generator as `Unix Makefiles`, and click `Finish`. The configuration may take a minute or two.
 
-![screenshot](screenshots/osx_01.png)
+![screenshot](screenshots/osx_01b.png)
 
 Then click `Generate`.
 
