@@ -14,6 +14,7 @@ The `./configure` is part of [AutoMake](https://www.gnu.org/software/automake/),
 
 See one of the markdown files listed here based on your OS and compiler:
 
+* [Anything + Visual Studio Code](INSTALL_VSCODE.md)
 * [Anything + Clion](INSTALL_CLION.md)
 * [Windows + Visual Studio](INSTALL_MSVC.md)
 * [Windows + MinGW no IDE](INSTALL_MINGW.md)
