@@ -2,6 +2,8 @@
 
 Make sure you download [**Visual Studio Code**](https://code.visualstudio.com/) which is available on Windows, Linux, or OSX. Then, make sure you have cmake installed as well. You can install it via `sudo apt install cmake cmake-gui -y` or from [here](https://cmake.org/download/#latest).
 
+Need help installing Visual Studio Code on Linux? [Try this post](https://linuxize.com/post/how-to-install-visual-studio-code-on-ubuntu-18-04/).
+
 ## VS Code extensions
 
 Install the `CMake Tools` extension.
