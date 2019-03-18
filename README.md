@@ -34,6 +34,7 @@ The CMake will automatically download the `cudd-3.0.0.tar.gz` and extracts it in
 ## FAQ
 
 * **CMAKE_CXX_COMPILER not found** - Make sure you have installed a compiler. Double check by running `gcc --version` (Linux) or `clang --version` (OSX) or `x86_64-w64-mingw32-g++ --version` (Windows).
+* **CMAKE_CXX_COMPILER not found when using XCode** - [Read this stackoverflow post](https://stackoverflow.com/questions/41380900/cmake-error-no-cmake-c-compiler-could-be-found-using-xcode-and-glfw).
 
 ## Having a problem?
 
