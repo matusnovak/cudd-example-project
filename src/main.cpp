@@ -1,5 +1,29 @@
+// C++ style
+// Example is from http://web.mit.edu/sage/export/tmp/y/usr/share/doc/polybori/cudd/node5.html
+// Added minor modifications.
+// All credits go to the creator.
+#include <iostream>
+#include <cuddObj.hh>
+
+int main (int argc, char *argv[]) { 
+    Cudd mgr(0,0);
+    BDD x = mgr.bddVar();
+    BDD y = mgr.bddVar();
+    BDD f = x * y;
+    BDD g = y + !x;
+    char const* inames[] = {"x", "y"};
+    char const* onames[] = {"f", "g"};
+    DdNode *Dds[] = {f.getNode(), g.getNode()};
+    FILE* fp = fopen("graph.dot", "w");
+    Cudd_DumpDot(mgr.getManager(), 2, Dds, (char**) inames, (char**) onames, fp);
+    return 0;
+}
+
 /*
 // C style
+// Example is from http://davidkebo.com/cudd
+// All credits go to the creator.
+// Uncomment this if you want to use C style instead!
 #include <iostream>
 #include <util.h>
 #include <cudd.h>
@@ -39,29 +63,3 @@ int main (int argc, char *argv[]) {
     return 0;
 }
 */
-
-// C++ style
-#include <iostream>
-#include <cuddObj.hh>
-
-static void testBdd(Cudd& mgr, int verbosity) {
-    std::cout << "\n\n----------testBdd---------\n\n";
-    BDD x = mgr.bddVar();
-    BDD y = mgr.bddVar();
-    BDD f = x * y;
-    BDD g = y + !x;
-    BDD h = f | ~g;
-    char const* inames[] = {"x", "y"};
-    char const* onames[] = {"f", "g", "h"};
-    DdNode *Dds[] = {f.getNode(), g.getNode(), h.getNode()};
-    int NumNodes = sizeof(onames)/sizeof(onames[0]);
-    FILE* fp = fopen("narf.dot", "w");
-    int result = Cudd_DumpDot(mgr.getManager(), NumNodes, Dds, (char**) inames, (char**) onames, fp);
-}
-
-int main (int argc, char *argv[]) { 
-    int verbosity = 2;
-    Cudd mgr(0,2);
-    testBdd(mgr,verbosity);
-    return 0;
-}

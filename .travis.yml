@@ -1,0 +1,46 @@
+language: cpp
+matrix:
+  include:
+  - os: linux
+    addons:
+      apt:
+        sources:
+          - ubuntu-toolchain-r-test
+        packages:
+          - g++-5
+          - cmake
+    env:
+      - ARCH=x86_64
+      - TOOLSET=linux-gnu
+  - os: osx
+    osx_image: xcode6.4
+    addons:
+      apt:
+        sources:
+          - llvm-toolchain-precise-3.7
+        packages:
+          - cmake
+          - clang-3.7
+    env:
+      - ARCH=x86_64
+      - TOOLSET=apple-darwin
+before_install:
+  - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt-get install wget tar -y; fi
+script:
+  - export CURRENT_BRANCH=$TRAVIS_BRANCH
+  - if [ $TRAVIS_OS_NAME == linux ]; then sudo unlink /usr/bin/gcc && sudo ln -s /usr/bin/gcc-5 /usr/bin/gcc; fi
+  - if [ $TRAVIS_OS_NAME == linux ]; then sudo unlink /usr/bin/g++ && sudo ln -s /usr/bin/g++-5 /usr/bin/g++; fi
+  - mkdir build
+  - cd build && (cmake ..  -DCMAKE_INSTALL_PREFIX=../install -DCMAKE_BUILD_TYPE=MinSizeRel || travis_terminate 1) && cd ..
+  - cd build && (cmake --build . || travis_terminate 1) && cd ..
+  - cd build && (./cudd-example || travis_terminate 1) && cd ..
+branches:
+  only:
+  - master
+  - devel
+notifications:
+  email:
+    recipients:
+    - matusnov@gmail.com
+  on_success: always
+  on_failure: always
